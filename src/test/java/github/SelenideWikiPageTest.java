@@ -19,11 +19,9 @@ public class SelenideWikiPageTest {
 
     // Step 1
     open("https://github.com/");
-    //for nav-search-input no needs quotes, but for nav-search.input it needs, use ''
+    //for nav-search-input no needs quotes, but for 'nav-search.input' it needs, use ''
     $("[data-test-selector=nav-search-input]").setValue("selenide").pressEnter();
-    //$$ method finds CSS locators at DOM
     $$("ul.repo-list li").first().$("a").click();
-    //checking that opened page selenide / selenide using div class h1
     $("h1").shouldHave(text("selenide / selenide"));
 
     // Step 2
@@ -33,13 +31,15 @@ public class SelenideWikiPageTest {
     // Step 3
     $("#wiki-pages-filter").setValue("softAssertion");
     $("[data-filterable-for=wiki-pages-filter]").shouldHave(text("SoftAssertions"));
+
+    // Step 4
     $(byText("SoftAssertions")).click();
     $("#wiki-wrapper").shouldHave(text("SoftAssertions"));
 
-    // Step 4
-
-
-
-
+    // Expected result
+    // headers check
+    $("#wiki-wrapper").shouldHave(text("Using JUnit5 extend test class"));
+    // code check
+    $("#wiki-wrapper").shouldHave(text("SoftAssertsExtension"));
     }
 }
