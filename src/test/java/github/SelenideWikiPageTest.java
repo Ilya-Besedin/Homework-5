@@ -40,6 +40,6 @@ public class SelenideWikiPageTest {
     // headers check
     $("#wiki-wrapper").shouldHave(text("Using JUnit5 extend test class"));
     // code check
-    $("#wiki-wrapper").shouldHave(text("SoftAssertsExtension"));
+    $("#wiki-wrapper").shouldHave(text("SoftAssertsExtension.class"));
     }
 }
