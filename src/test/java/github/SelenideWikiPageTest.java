@@ -17,29 +17,29 @@ public class SelenideWikiPageTest {
     @Test
     public void searchSelenideInGithub() {
 
-    // Step 1
-    open("https://github.com/");
-    //for nav-search-input no needs quotes, but for 'nav-search.input' it needs, use ''
-    $("[data-test-selector=nav-search-input]").setValue("selenide").pressEnter();
-    $$("ul.repo-list li").first().$("a").click();
-    $("h1").shouldHave(text("selenide / selenide"));
+        // Step 1
+        open("https://github.com/");
+        //for nav-search-input no needs quotes, but for 'nav-search.input' it needs, use ''
+        $("[data-test-selector=nav-search-input]").setValue("selenide").pressEnter();
+        $$("ul.repo-list li").first().$("a").click(); //$$("ul.repo-list li").first() the same that $("ul.repo-list li")
+        $("h1").shouldHave(text("selenide / selenide"));
 
-    // Step 2
-    $("#wiki-tab").click();
-    $(".markdown-body").shouldHave(text("Welcome to the selenide wiki!"));
+        // Step 2
+        $("#wiki-tab").click();
+        $(".markdown-body").shouldHave(text("Welcome to the selenide wiki!"));
 
-    // Step 3
-    $("#wiki-pages-filter").setValue("softAssertion");
-    $("[data-filterable-for=wiki-pages-filter]").shouldHave(text("SoftAssertions"));
+        // Step 3
+        $("#wiki-pages-filter").setValue("softAssertion");
+        $("[data-filterable-for=wiki-pages-filter]").shouldHave(text("SoftAssertions"));
 
-    // Step 4
-    $(byText("SoftAssertions")).click();
-    $("#wiki-wrapper").shouldHave(text("SoftAssertions"));
+        // Step 4
+        $(byText("SoftAssertions")).click();
+        $("#wiki-wrapper").shouldHave(text("SoftAssertions"));
 
-    // Expected result
-    // headers check
-    $("#wiki-wrapper").shouldHave(text("Using JUnit5 extend test class"));
-    // code check
-    $("#wiki-wrapper").shouldHave(text("SoftAssertsExtension.class"));
+        // Expected result
+        // headers check
+        $("#wiki-wrapper").shouldHave(text("Using JUnit5 extend test class"));
+        // code check
+        $("#wiki-wrapper").shouldHave(text("SoftAssertsExtension.class"));
     }
 }
